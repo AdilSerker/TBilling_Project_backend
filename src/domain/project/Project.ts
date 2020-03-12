@@ -18,6 +18,12 @@ export interface CreateParams {
     createTime?: Date;
 }
 
+export interface UpdateParams {
+    name?: string;
+    plannedTime?: number;
+    type?: ProjectType;
+}
+
 export class Project {
     public id?: number;
     public name: string;
@@ -27,9 +33,9 @@ export class Project {
     public status: ProjectStatus;
     public createTime?: Date;
     
-    protected members?: number[];
+    protected members: number[];
     
-    constructor(params: CreateParams, members?: number[]) {
+    constructor(params: CreateParams, members: number[] = []) {
         const { id, name, authorId, plannedTime, type, status, createTime} = params;
 
         this.id = id;
@@ -47,8 +53,10 @@ export class Project {
         return this.members;
     }
 
-    public updateMembers(newMemberList: number[]): void {
-        this.members = newMemberList;
+    public updateMembers(newMemberList: number[] = []): void {
+        if (newMemberList.length) {
+            this.members = newMemberList;
+        }  
     }
 
     public getScheme() {
@@ -62,5 +70,15 @@ export class Project {
             status: this.status,
             createTime: this.createTime
         }
+    }
+
+    public updateProfile({ name, plannedTime, type }: UpdateParams) {
+        this.name = name || this.name;
+        this.plannedTime = plannedTime || this.plannedTime;
+        this.type = type || this.type;
+    }
+
+    public changeStatus(status: ProjectStatus) {
+        this.status = status;
     }
 }

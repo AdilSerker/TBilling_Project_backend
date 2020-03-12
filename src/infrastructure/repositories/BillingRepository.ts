@@ -42,7 +42,11 @@ export class BillingTimeRepository implements IBillingTimeRepository {
     }
 
     public async save(billing: BillingTime): Promise<BillingTime> {
-        return getRepository(BillingTimeModel).save(plainToClass(BillingTimeModel, billing));
+        const billingModel = await getRepository(BillingTimeModel).save(
+            plainToClass(BillingTimeModel, billing.serialize())
+        );
+
+        return this.createInstance(billingModel);
     }
 
     public async delete(id: number): Promise<void> {

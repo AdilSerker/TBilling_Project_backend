@@ -8,6 +8,12 @@ export interface CreateParams {
     password: string;
 }
 
+export interface UpdateParams {
+    firstName?: string;
+    lastName?: string;
+    password?: string;
+}
+
 export class User {
     public id?: number;
     public firstName: string;
@@ -40,5 +46,12 @@ export class User {
             login: this.login,
             password: this.password
         } 
+    }
+
+    public updateProfile({ firstName, lastName, password }: UpdateParams) {
+        this.firstName = firstName || this.firstName;
+        this.lastName = lastName || this.lastName;
+
+        this.password = password || this.password;
     }
 }

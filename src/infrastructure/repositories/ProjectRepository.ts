@@ -1,9 +1,8 @@
 import { plainToClass } from 'class-transformer';
 import { getRepository, In } from 'typeorm';
-import Container, { Service } from "typedi";
 
 import { Project } from '../../domain/project/Project';
-import { IProjectRepository, ProjectListQueryParams } from '../../domain/Project/IProjectRepository';
+import { IProjectRepository, ProjectListQueryParams } from '../../domain/project/IProjectRepository';
 import { ProjectModel } from '../models/ProjectModel';
 import { MemberModel } from '../models/MemberModel';
 
@@ -39,6 +38,9 @@ export class ProjectRepository implements IProjectRepository {
 
     public async save(project: Project): Promise<Project> {
         const projectModel = await getRepository(ProjectModel).save(plainToClass(ProjectModel, project.getScheme()));
+
+        await getRepository(MemberModel)
+            .query('delete from member where project_id = $1', [ projectModel.id ]);
 
         await Promise.all(project.getMembers().map(userId => {
             return getRepository(MemberModel).save({
