@@ -1,0 +1,1 @@
+{"type":"postgres","host":"127.0.0.1","database":"billing","username":"researcher","password":"researcher","entities":["dist/infrastructure/models/*.js"],"migrations":["dist/infrastructure/migrations/*.js"],"logging":["error"],"cli":{"migrationsDir":"src/infrastructure/migrations"}}
