@@ -13,7 +13,7 @@
     "create-migration": "node ./dist/bin/dbConfig > ormconfig.json && node ./node_modules/typeorm/cli migration:create -n"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "class-validator": "^0.11.0",
     "connect-redis": "^4.0.4",
