@@ -1,7 +1,8 @@
 export enum ConfigType {
 	Server = "server",
 	Db = "db",
-	ElasticSearch = 'elasticsearch'
+	ElasticSearch = 'elasticsearch',
+	Cors = "cors"
 }
 
 export interface DbConfig extends BaseConfig {
@@ -30,4 +31,9 @@ export interface ServerConfig extends BaseConfig {
 export interface ElasticsearchConfig extends BaseConfig {
 	host: string;
 	log: string;
+}
+
+export interface CorsConfig extends BaseConfig {
+	origin: string;
+	credentials: string;
 }

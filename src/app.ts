@@ -9,15 +9,17 @@ import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConne
 
 import "./components/di";
 
-import { Config, ConfigType, ServerConfig, ElasticsearchConfig } from "./components/config";
+import { Config, ConfigType, ServerConfig, CorsConfig } from "./components/config";
 import { middlewares } from "./components/middlewares";
 
 const dbConfig = <PostgresConnectionOptions>Config.getInstance().getConfig(ConfigType.Db);
 const serverConfig = <ServerConfig>Config.getInstance().getConfig(ConfigType.Server);
+const corsConfig = <CorsConfig>Config.getInstance().getConfig(ConfigType.Cors);
 
 
 useContainer(Container);
 const app = createExpressServer({
+	cors: corsConfig,
     controllers: [__dirname + '/application/controllers/**/*.js'],
     middlewares
 });
