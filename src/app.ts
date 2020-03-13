@@ -16,7 +16,6 @@ const dbConfig = <PostgresConnectionOptions>Config.getInstance().getConfig(Confi
 const serverConfig = <ServerConfig>Config.getInstance().getConfig(ConfigType.Server);
 const corsConfig = <CorsConfig>Config.getInstance().getConfig(ConfigType.Cors);
 
-
 useContainer(Container);
 const app = createExpressServer({
 	cors: corsConfig,
