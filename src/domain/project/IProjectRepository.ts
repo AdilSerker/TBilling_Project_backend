@@ -2,7 +2,7 @@ import { Token } from 'typedi';
 import { Project } from "./Project";
 
 export interface ProjectListQueryParams {
-
+    
 }
 
 export interface IProjectRepository {

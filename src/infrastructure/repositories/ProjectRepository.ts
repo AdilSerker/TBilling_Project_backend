@@ -18,7 +18,10 @@ export class ProjectRepository implements IProjectRepository {
     }
 
     public async getList(query: ProjectListQueryParams) : Promise<Project[]> {
+        const {  } = query;
+
         const projects = await getRepository(ProjectModel).find(query);
+
         const projectIds = projects.map(item => item.id);
 
         const projectsMembers = await getRepository(MemberModel).find({ projectId: In(projectIds) });
