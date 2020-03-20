@@ -3,7 +3,7 @@ import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConne
 
 import { IDbConnector, Connector } from "../../components/db-connector";
 import { Config, ConfigType } from "../../components/config";
-import { WorkType } from "./types";
+import { WorkType } from "../../types";
 import { jsonDataParser } from "./utils";
 import { WorkTypeModel } from "../../infrastructure/models/WorkTypeModel";
 

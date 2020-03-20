@@ -5,3 +5,8 @@ export interface UserAttributes {
     firstName: string;
     lastName: string;
 }
+
+export type WorkType = {
+    id: number;
+    name: string;
+}
