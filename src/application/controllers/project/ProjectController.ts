@@ -54,5 +54,4 @@ export class ProjectController {
 
         await this.projectRepository.save(project);
     }
-
 }

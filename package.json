@@ -10,7 +10,8 @@
     "build-dev": "./node_modules/.bin/tsc --watch",
     "migrate": "node ./dist/bin/dbConfig > ormconfig.json && node ./node_modules/typeorm/cli migration:run",
     "migrate-undo": "node ./dist/bin/dbConfig > ormconfig.json && node ./node_modules/typeorm/cli migration:revert",
-    "create-migration": "node ./dist/bin/dbConfig > ormconfig.json && node ./node_modules/typeorm/cli migration:create -n"
+    "create-migration": "node ./dist/bin/dbConfig > ormconfig.json && node ./node_modules/typeorm/cli migration:create -n",
+    "load-fixtures": "node ./dist/bin/loadFixtures/loader"
   },
   "dependencies": {
     "axios": "^0.18.1",

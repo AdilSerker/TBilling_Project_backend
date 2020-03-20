@@ -1,6 +1,7 @@
 import { JsonController, Post, Body, Get, QueryParams, Put, OnUndefined, UseBefore, ForbiddenError, Param } from "routing-controllers";
 
 import { billingRepository } from './../../../infrastructure/repositories/BillingRepository';
+import { projectRepository } from './../../../infrastructure/repositories/ProjectRepository';
 import { IProjectRepository } from './../../../domain/project/IProjectRepository';
 import { IBillingTimeRepository, BillingTimeQueryParams } from './../../../domain/billing/IBilliingTimeRepository';
 import { BillingTime } from './../../../domain/billing/BillingTime';
@@ -14,7 +15,7 @@ import { UpdateBillingItemForm } from "./validation/UpdateBillingItem";
 @JsonController('/api/time-billing')
 export class TimeBillingController {
     protected billingRepository: IBillingTimeRepository = billingRepository;
-    protected projectRepository: IProjectRepository;
+    protected projectRepository: IProjectRepository = projectRepository;
     
     @Post('/')
     @UseBefore(CheckAuthorize)
